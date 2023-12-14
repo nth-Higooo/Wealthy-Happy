@@ -1,0 +1,280 @@
+:root {
+    --bg-color:#1a1e2d;
+    --text-color: aliceblue;
+    --btn-color:#98989833;
+    --selected-color:#2F5288;
+}
+
+* {
+    font-family: 'Sulphur Point', 'Pontano Sans', sans-serif;
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    outline: none; border: none;
+    text-decoration: none;
+    transition: .2s linear;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 9rem;
+    scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+    width: .8rem;
+}
+
+html::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: whitesmoke;
+    border-radius: 5rem;
+}
+
+body {
+    background: var(--bg-color);
+}
+
+section {
+    padding: 2rem 7%;
+}
+
+.title {
+    color: whitesmoke;
+    font-size:3.5em;
+    font-family: 'Poller One', sans-serif;
+    margin: 20px;
+}
+
+/* HEADER */
+header {
+    background: var(--bg-color);
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 7%;
+    border-bottom: var(--btn-color);
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 10000;
+}
+
+.header img {
+    height: 3rem;
+}
+
+.header .navbar a {
+    margin: 2rem;
+    font-size: 2.5rem;
+    color: var(--text-color);
+}
+
+.header .navbar a:hover {
+    color: var(--selected-color);
+    border-bottom: .1rem solid var(--text-color);
+    padding-bottom: .5rem ;
+}
+
+.header .icon {
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 2.5rem;
+    margin-left: 2rem;
+}
+
+.header .icon:hover {
+    color: var(--selected-color);
+}
+#menu-btn {display: none;}
+
+/* HOME SECTION */
+.home {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    background: url(img/BG.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.home .content {
+    max-width: 80rem;
+}
+
+.home .content .title {
+    color: whitesmoke;
+    font-size: 4em;
+    font-family: 'Poller One', sans-serif;
+    margin: 20px;
+}
+
+.home .content p{
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+.home .content .explr-btn, .cont-btn {
+    font-family: 'Sulphur Point', sans-serif;
+    border-radius: 5px;
+    font-size: 2em;
+    padding: 5px 20px;
+    cursor: pointer;
+    margin-right: 50px;
+}
+
+.home .content .explr-btn{
+    border: 0.5px solid var(--btn-color);
+    background-color: var(--selected-color);
+    color: var(--text-color);
+}
+.home .content .explr-btn:hover{
+    background-color: var(--btn-color);
+}
+.home .content .cont-btn{
+    border: 0.5px solid whitesmoke;
+    background-color: var(--btn-color);
+    color: var(--text-color);
+}
+.home .content .cont-btn:hover{
+   border: 0.5px solid var(--btn-color); 
+}
+
+/* ABOUT US SECTION */
+.about {
+    justify-content: space-between;
+    align-items: center;
+}
+.about h2 {
+    margin-top: 80px;
+}
+.about .row .objtive, .key-ques{
+    display: flex;
+    border-radius: 10px;
+    background-color: var(--btn-color);
+    margin-bottom: 30px;
+    max-width: fit-content;
+}
+.about .row .title {
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-size: 2em;
+    font-family: 'Sulphur Point', sans-serif;
+    background-color: var(--selected-color);
+    padding: 20px 10px;
+    border-radius: 5px;
+}
+
+.about p{
+    align-items: center;
+    font-size: 2.5rem;
+    color: var(--text-color);
+    padding: 10px 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 70rem;
+}
+.about img{
+    width: 100%;
+    max-width: 30rem;
+}
+
+/* DASBOARD SECTION */
+.dashboard h2 {
+    margin-top: 80px;
+}
+.dash_title {
+    text-align: center;
+}
+.dashboard .world_map {
+    align-content: center;
+    color: whitesmoke;
+    font-size: 2.5em;
+    font-family: 'Poller One', sans-serif;
+}
+.dashboard .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.dashboard .year_select_btn {
+    flex: 1;
+}
+.dashboard .year_select_btn select {
+    padding: 8px;
+    font-size: 0.8em;
+    border: 1px solid var(--selected-color);
+    border-radius: 4px;
+    background-color: whitesmoke;
+}
+.dashboard .year_select_btn select:hover, 
+.dashboard .year_select_btn select:focus {
+    border-color: var(--selected-color);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+.dashboard .wrl_btn {
+    font-family: 'Sulphur Point', sans-serif;
+    font-size: 0.8em;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+.dashboard .wrl_btn:hover {
+    color: whitesmoke;
+    background-color: var(--selected-color);
+}
+.dashboard .wrl_btn.selected {
+    color: whitesmoke;
+    background-color: var(--selected-color);
+}
+/* WORLD MAP */
+.map {
+    display: none;
+    width: 800px;
+    height: 600px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin: 20px auto;
+    background-color: var(--btn-color);
+}
+
+.country {
+    fill: var(--btn-color);
+    stroke: var(--bg-color);
+}
+.tooltip {
+    font-size: 2rem;
+    position: absolute;
+    background-color: var(--text-color);
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 10px;
+    opacity: 0;
+}
+  
+@media (max-width:991px) {
+    #menu-btn {display: inline-block;}   
+
+    .header .navbar {
+        position: absolute;
+        top: 100%; right: -100%;
+        color: var(--btn-color);
+        background: 30rem;
+        height: calc(100vh - 9.5rem);
+    }
+    .header .navbar.active {
+        background-color: var(--bg-color);
+        right: 0;
+    }
+    .header .navbar a{
+        color: var(--text-color);
+        display: block;
+        margin: 1.5rem;
+        padding: .5rem;
+        font-size: 2rem;
+    }
+    section {
+        padding: 2rem;
+    }
+}
