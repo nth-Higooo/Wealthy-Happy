@@ -26,6 +26,44 @@ Our primary focus will be on developing website functionality to present the dat
 
 For more details, please refer to the [proposal document]().
 
+## Documentation
+
+To quickly serve the project files locally during development, use `http-server`. Follow these steps:
+
+1. **Install Node.js and npm:**
+   - Make sure you have Node.js and npm installed on your machine.
+
+2. **Install http-server:**
+   - Open your terminal or command prompt.
+   - Run the following command to install `http-server` globally:
+     ```bash
+     npm install -g http-server
+     ```
+
+3. **Serve Your Files:**
+   - Navigate to the directory containing your website files.
+   - Run the following command to start the server:
+     ```bash
+     npx http-server
+     ```
+
+   Alternatively, if you have installed `http-server` globally, you can use:
+     ```bash
+     http-server
+     ```
+
+   The server will run on port 8080 by default. You can access your site by navigating to [http://localhost:8080](http://localhost:8080) in your web browser.
+
+4. **Specify a Port (Optional):**
+   - If you want to use a specific port, you can specify it with the `-p` option:
+     ```bash
+     npx http-server -p 3000
+     ```
+     This example starts the server on port 3000.
+
+
+## About us
+
 **University Information:**
 - University: International University, Vietnam National University - HCMC
 - School: School of Computer Science and Engineering

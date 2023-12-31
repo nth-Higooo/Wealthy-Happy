@@ -1,70 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DASHBOARD</title>
-    <!--web logo-->
-    <link rel="icon" href="img\logo.png" type="image/icon"/>
-    <!--custom stylesheet-->
-    <link rel="stylesheet" type="text/css" href="style.css"/>
-    <!--font-awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!--google fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DASHBOARD</title>
+        <!--web logo-->
+        <link rel="icon" href="img\logo.png" type="image/icon"/>
+        <!--custom stylesheet-->
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <!--font-awesome-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        <!--google fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Notable&family=Poller+One&family=Pontano+Sans:wght@300&family=Sulphur+Point&display=swap" rel="stylesheet">
-    <!-- Load d3.js -->
-    <script src="http://d3js.org/d3.v4.js"></script>
-    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
-</head>
-<body>
-    <!--HEADER SECTION-->
-    <header class="header">
-        <a href="#" class="logo">
-            <img src="img/logo.png" alt="logo">
-        </a>
+    <link href="https://fonts.googleapis.com/css2?family=Notable&family=Poller+One&family=Pontano+Sans:wght@300&family=Sulphur+Point&display=swap" rel="stylesheet">
+        <!-- Load d3.js -->
+        <script src="https://d3js.org/d3.v4.js"></script>
+        <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+        <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+    </head>
+    <body>
+        <!--HEADER SECTION-->
+        <header class="header">
+            <a href="#" class="logo">
+                <img src="img/logo.png" alt="logo">
+            </a>
 
-        <nav class="navbar">
-            <a href="index.html">HOME</a>
-            <a href="aboutUs.html">ABOUT US</a>
-            <a href="dashboard.html">DASHBOARD</a>
-        </nav>
+            <nav class="navbar">
+                <a href="index.html">HOME</a>
+                <a href="aboutUs.html">ABOUT US</a>
+                <a href="dashboard.html">DASHBOARD</a>
+            </nav>
 
-        <div class="icon">
-            <div class="fas fa-bars" id="menu-btn"></div>
-        </div>
-
-    </header>
-
-    <!--DASHBOARD SECTION-->
-    <section class="dashboard">
-        <h2 class="title">DASHBOARD</h2>
-        <div class="world_map">
-            <h3 class="dash_title">The World View</h3>
-            
-            <div class="row">
-                <div class="year_select_btn">
-                    <label for="year">Year:</label>
-                    <select name="year" id="years-menu"></select>
-                </div>
-                <button class="wrl_btn" id="GDP">GDP</button>
-                <button class="wrl_btn" id="GNH">GNH</button>
+            <div class="icon">
+                <div class="fas fa-bars" id="menu-btn"></div>
             </div>
-            
-            <!-- WORLD MAP CODE HERE-->
-            <svg class="map" id="GDPmap" width="400" height="300"></svg>
-            <svg class="map" id="GHNmap" width="400" height="300"></svg>
-        </div>
-    </section>
 
-    <script src="index.js"></script>
-    <script src="/map/GDP.js"></script>
-    <script src="/map/GNH.js"></script>
+        </header>
 
-    
-</body>
+        <!--DASHBOARD SECTION-->
+        <section class="dashboard">
+            <h2 class="title">DASHBOARD</h2>
+            <div class="world_map">
+                <h3 class="dash_title">The World View</h3>
+                
+                <div class="row">
+                    <div class="year_select_btn">
+                        <label for="year">Year:</label>
+                        <select name="year" id="years-menu"></select>
+                    </div>
+                    <button class="wrl_btn" id="GDP">GDP</button>
+                    <button class="wrl_btn" id="GNH">GNH</button>
+                </div>
+                
+                <!-- WORLD MAP CODE HERE-->
+                <svg class="map" id="GDPmap" width="400" height="300"></svg>
+                <svg class="map" id="GHNmap" width="400" height="300"></svg>
+            </div>
+        </section>
+
+        <script src="index.js"></script>
+        <script src="./map/GDP.js"></script>
+        <script src="./map/GNH.js"></script>
+
+        
+    </body>
 </html>

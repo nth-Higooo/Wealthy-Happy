@@ -73,7 +73,7 @@ d3.select("#years-menu").on("change", function() {
 function update2013() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "/data/gnh_data.csv", function(d) { 
+        .defer(d3.csv, "data/gnh_data.csv", function(d) { 
             if(d.year === "2013") {
                 data.set(d.Code, +d.Happiness);
             }
@@ -83,7 +83,7 @@ function update2013() {
 function update2014() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "/data/gnh_data.csv", function(d) { 
+        .defer(d3.csv, "data/gnh_data.csv", function(d) { 
             if(d.year === "2014") {
                 data.set(d.Code, +d.Happiness);
             }
