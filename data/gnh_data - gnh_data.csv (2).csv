@@ -1,4 +1,4 @@
-Name,Code,Year,Dystopia_residual,Log GDP per capita,Social support,Healthy life expectancy,Freedom to make life choices,Generosity,Perceptions of corruption,Happiness,Dystopia_residual_p,Log GDP per capita_p,Social support_p,Healthy life expectancy_p,Freedom to make life choices_p,Generosity,Perceptions of corruption_p,,,,
+Name,Code,Year,Dystopia_residual,Log GDP per capita,Social support,Healthy life expectancy,Freedom to make life choices,Generosity,Perceptions of corruption,Happiness,Dystopia_residual_p,Log GDP per capita_p,Social support_p,Healthy life expectancy_p,Freedom to make life choices_p,Generosity_p,Perceptions of corruption_p,,,,
 Afghanistan,AFG,2022,"0,976","0,645",0,"0,087",0,"0,093","0,059","1,859","52,50134481","34,69607316",0,"4,679935449",0,"5,002689618","3,173749328",,,,
 Afghanistan,AFG,2021,"1,263","0,758",0,"0,289",0,"0,089","0,005","2,404","52,5374376","31,53078203",0,"12,02163062",0,"3,702163062","0,2079866889",,,,
 Afghanistan,AFG,2020,"1,895","0,37",0,"0,126",0,"0,122","0,01","2,523","75,10899723","14,66508125",0,"4,994054697",0,"4,835513278","0,3963535474",,,,
