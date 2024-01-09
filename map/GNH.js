@@ -1,17 +1,12 @@
-d3.csv("./data/gnh_data.csv").then(function(data){
-   const years = [{year: 2013, value: "data1"}, {year: 2014, value: "data2"}, 
-           {year: 2015, value: "data3"}, {year: 2016, value: "data4"},
-           {year: 2017, value: "data5"}, {year: 2018, value: "data6"}, 
-           {year: 2019, value: "data7"}, {year: 2020, value: "data8"},
-           {year: 2021, value: "data9"}, {year: 2022, value: "data10"}];
-  const menuYear = d3.select("#years-menu")
-   .style("border-radius", "3px")
-   .style("right", "210px");
-   menuYear.selectAll("option")
-   .data(years);
-
-   // Read the CSV file
+ // Read the CSV file
    d3.csv("data/gnh_data.csv").then(data => {
+    // Use it when the xAxisLabels can't take data
+    //     return{
+    //     country : +d.Name,
+    //     year : +d.Year,
+    //     Dystopia: +d['Dystopia residual'],
+    //    }
+       
        // Set up the initial year and x-axis variable
        let selectedYear = 2013;
        let selectedXAxis = 'dystopia';
@@ -29,7 +24,7 @@ d3.csv("./data/gnh_data.csv").then(function(data){
        // Function to draw the scatter plot
        function drawScatterPlot() {
            // Filter data based on the selected year
-           const filteredData = data.filter(d => +d.year === selectedYear);
+           const filteredData = data.filter(d => +d.Year === selectedYear);
 
            // Set up the SVG container dimensions
            const margin = { top: 20, right: 20, bottom: 30, left: 40 };
@@ -131,4 +126,4 @@ d3.csv("./data/gnh_data.csv").then(function(data){
            }
        }
    });
-});
+
