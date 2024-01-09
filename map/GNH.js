@@ -60,13 +60,13 @@
 
            // Add x-axis label based on the selected x-axis variable
            const xAxisLabels = {
-               'dystopia': 'Dystopia residual',
-               'log-gdp': 'Log GDP per capita',
-               'social': 'Social support',
-               'healthy': 'Healthy life expectancy',
-               'freedom': 'Freedom to make life choices',
-               'generosity': 'Generosity',
-               'perceptions': 'Perceptions of corruption'
+               'Dystopia residual': 'Dystopia Residual',
+               'Log GDP per capita': 'Log GDP Per Capita',
+               'Social support': 'Social Support',
+               'Healthy life expectancy': 'Healthy Life Expectancy',
+               'Freedom to make life choices': 'Freedom To Make Life Choices',
+               'Generosity': 'Generosity',
+               'Perceptions of corruption': 'Perceptions Of Corruption'
            };
 
            // Add x-axis
