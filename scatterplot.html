@@ -15,6 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Notable&family=Poller+One&family=Pontano+Sans:wght@300&family=Sulphur+Point&display=swap" rel="stylesheet">
+    <script src="https://d3js.org/d3.v4.js"></script>
 </head>
 <body>
     <!--HEADER SECTION-->
@@ -36,11 +37,35 @@
     </header>
 
     <!--SCATTERPLOT SECTION-->
-    <section class="scatterplot" id="scatterplot">
-        
-    </section>
+    <!-- Dropdown for selecting the year -->
+<label for="yearSelector">Select Year:</label>
+<select id="yearSelector" onchange="updateScatterPlot()">
+    <option value="2013">2013</option>
+    <option value="2014">2014</option>
+    <option value="2015">2015</option>
+    <option value="2016">2016</option>
+    <option value="2017">2017</option>
+    <option value="2018">2018</option>
+    <option value="2019">2019</option>
+    <option value="2020">2020</option>
+    <option value="2021">2021</option>
+    <option value="2022">2022</option>
+</select>
 
-    
+<!-- Dropdown for selecting the x-axis variable -->
+<label for="xAxisSelector">Showing data for:</label>
+<select id="xAxisSelector" onchange="updateScatterPlot()">
+    <option value="dystopia">Dystopia residual</option>
+    <option value="log-gdp">Log GDP per capita</option>
+    <option value="social">Social support</option>
+    <option value="healthy">Healthy life expectancy</option>
+    <option value="freedom">Freedom to make life choices</option>
+    <option value="generosity">Generosity</option>
+    <option value="perceptions">Perceptions of corruption</option>
+</select>
 
+<svg id="scatter-plot"></svg>
+    <!-- Include separate JavaScript file for scatter plot -->
+    <script src="./map/GNH.js"></script>
 </body>
 </html>

@@ -1,272 +1,134 @@
-var svg = d3.select("#GHNmap"),
-  width = +svg.attr("width"),
-  height = +svg.attr("height");
+d3.csv("./data/gnh_data.csv").then(function(data){
+   const years = [{year: 2013, value: "data1"}, {year: 2014, value: "data2"}, 
+           {year: 2015, value: "data3"}, {year: 2016, value: "data4"},
+           {year: 2017, value: "data5"}, {year: 2018, value: "data6"}, 
+           {year: 2019, value: "data7"}, {year: 2020, value: "data8"},
+           {year: 2021, value: "data9"}, {year: 2022, value: "data10"}];
+  const menuYear = d3.select("#years-menu")
+   .style("border-radius", "3px")
+   .style("right", "210px");
+   menuYear.selectAll("option")
+   .data(years);
 
-// Map and projection
-var path = d3.geoPath();
-var projection = d3.geoMercator()
-  .scale(120)
-  .center([0,45])
-  .translate([width/2, height/2]);
+   // Read the CSV file
+   d3.csv("data/gnh_data.csv").then(data => {
+       // Set up the initial year and x-axis variable
+       let selectedYear = 2013;
+       let selectedXAxis = 'dystopia';
 
-// Data and color scale
-var data = d3.map();
-var colorScale = d3.scaleThreshold()
-  .domain([100000, 1000000, 10000000, 30000000, 100000000, 500000000])
-  .range(d3.schemeBlues[3]);
+       // Function to update the scatter plot based on user selections
+       function updateScatterPlot() {
+           selectedYear = parseInt(document.getElementById("yearSelector").value, 10);
+           selectedXAxis = document.getElementById("xAxisSelector").value;
+           drawScatterPlot();
+       }
 
-//Select years
-const years = [{year: 2013, value: "data1"}, {year: 2014, value: "data2"}, 
-            {year: 2015, value: "data3"}, {year: 2016, value: "data4"},
-            {year: 2017, value: "data5"}, {year: 2018, value: "data6"}, 
-            {year: 2019, value: "data7"}, {year: 2020, value: "data8"},
-            {year: 2021, value: "data9"}, {year: 2022, value: "data10"}]
-const menuYear = d3.select("#years-menu")
-    .style("border-radius", "3px")
-    .style("right", "210px");
-        
-menuYear.selectAll("option")
-        .data(years)
-        .enter().append("option")
-        .attr("value", function(d) {
-            return d.value;
-        })
-        .text(function(d) { return d.year; });
+       // Initial drawing of the scatter plot
+       drawScatterPlot();
 
-update2013();
+       // Function to draw the scatter plot
+       function drawScatterPlot() {
+           // Filter data based on the selected year
+           const filteredData = data.filter(d => +d.year === selectedYear);
 
-d3.select("#years-menu").on("change", function() {
-    const selectedOption = d3.select(this).property("value");
-    if (selectedOption === "data2") {
-        update2014();
-    }
-    else if (selectedOption === "data3") {
-        update2015();
-    }
-    else if (selectedOption === "data4") {
-        update2016();
-    }
-    else if (selectedOption === "data5") {
-        update2017();
-    }
-    else if (selectedOption === "data6") {
-        update2018();
-    }
-    else if (selectedOption === "data7") {
-        update2019();
-    }
-    else if (selectedOption === "data8") {
-        update2020();
-    }
-    else if (selectedOption === "data9") {
-        update2021();
-    }
-    else if (selectedOption === "data10") {
-        update2022();
-    }
-    else {
-        update2013();
-    }
-})
+           // Set up the SVG container dimensions
+           const margin = { top: 20, right: 20, bottom: 30, left: 40 };
+           const width = 600 - margin.left - margin.right;
+           const height = 400 - margin.top - margin.bottom;
 
-// Load external data and boot
-function update2013() {
-    d3.queue()
-        .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "data/gnh_data.csv", function(d) { 
-            if(d.year === "2013") {
-                data.set(d.Code, +d.Happiness);
-            }
-        })
-        .await(ready);
-}
-function update2014() {
-    d3.queue()
-        .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "data/gnh_data.csv", function(d) { 
-            if(d.year === "2014") {
-                data.set(d.Code, +d.Happiness);
-            }
-        })
-        .await(ready);
-}
-function update2015() {
-    d3.queue()
-        .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "/data/gnh_data.csv", function(d) { 
-            if(d.year === "2015") {
-                data.set(d.Code, +d.Happiness);
-            }
-        })
-        .await(ready);
-}
-function update2016() {
-    d3.queue()
-        .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "/data/gnh_data.csv", function(d) { 
-            if(d.year === "2016") {
-                data.set(d.Code, +d.Happiness);
-            }
-        })
-        .await(ready);
-}
-function update2017() {
-    d3.queue()
-        .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "/data/gnh_data.csv", function(d) { 
-            if(d.year === "2017") {
-                data.set(d.Code, +d.Happiness);
-            }
-        })
-        .await(ready);
-}
-function update2018() {
-    d3.queue()
-        .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "/data/gnh_data.csv", function(d) { 
-            if(d.year === "2018") {
-                data.set(d.Code, +d.Happiness);
-            }
-        })
-        .await(ready);
-}
-function update2019() {
-    d3.queue()
-        .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "/data/gnh_data.csv", function(d) { 
-            if(d.year === "2019") {
-                data.set(d.Code, +d.Happiness);
-            }
-        })
-        .await(ready);
-}
-function update2020() {
-    d3.queue()
-        .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "/data/gnh_data.csv", function(d) { 
-            if(d.year === "2020") {
-                data.set(d.Code, +d.Happiness);
-            }
-        })
-        .await(ready);
-}
-function update2021() {
-    d3.queue()
-        .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "/data/gnh_data.csv", function(d) { 
-            if(d.year === "2021") {
-                data.set(d.Code, +d.Happiness);
-            }
-        })
-        .await(ready);
-}
-function update2022() {
-    d3.queue()
-        .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "/data/gnh_data.csv", function(d) { 
-            if(d.year === "2022") {
-                data.set(d.Code, +d.Happiness);
-            }
-        })
-        .await(ready);
-}
-//Zooming function
-function zoomToBoundingBox(bbox) {
-    const [[x0, y0], [x1, y1]] = bbox;
-    const bounds = [[x0, y0], [x1, y1]];
+           // Create the SVG container
+           const svg = d3.select("#scatter-plot")
+               .attr("width", width + margin.left + margin.right)
+               .attr("height", height + margin.top + margin.bottom)
+               .append("g")
+               .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    // Compute the center of the bounding box
-    const center = [
-        (bounds[0][0] + bounds[1][0]) / 2,
-        (bounds[0][1] + bounds[1][1]) / 2
-    ];
+           // Set up scales
+           const xScale = d3.scaleLinear()
+               .domain([d3.min(filteredData, d => +d[selectedXAxis]), d3.max(filteredData, d => +d[selectedXAxis])])
+               .range([0, width]);
 
-    // Compute the zoom level based on the bounding box width
-    const dx = bounds[1][0] - bounds[0][0];
-    const dy = bounds[1][1] - bounds[0][1];
-    const zoom = Math.min(12, 0.9 / Math.max(dx / width, dy / height));
+           const yScale = d3.scaleLinear()
+               .domain([d3.min(filteredData, d => +d.happiness), d3.max(filteredData, d => +d.happiness)])
+               .range([height, 0]);
 
-    // Return the center and zoom level, but don't apply the zoom and pan to the map
-    return { center, zoom };
-}
+           // Add circles to represent data points
+           svg.selectAll("circle")
+               .data(filteredData)
+               .enter().append("circle")
+               .attr("cx", d => xScale(+d[selectedXAxis]))
+               .attr("cy", d => yScale(+d.happiness))
+               .attr("r", 5) // Radius of the circle
+               .on("mouseover", mouseover)
+               .on("mousemove", mousemove)
+               .on("mouseleave", mouseleave);
 
-// Draw map
-function ready(error, topo) {
-    //Tool tip
-    const tooltip = d3.select("body").append("div")
-            .attr("class", "tooltip")
-            .style("opacity", 0);
-    
-  let mouseOver = function(d) {
-    d3.selectAll(".Country")
-      .transition()
-      .duration(100)
-      .style("opacity", .5)
-    d3.select(this)
-      .transition()
-      .duration(200)
-      .style("opacity", 1)
-      .style("stroke", "black")
-    tooltip.html(`<strong>${d.properties.name}</strong><br/>GNH: ${d.Happiness.toLocaleString()} B`)
-      .style("left", (d3.event.pageX + 10) + "px")
-      .style("top", (d3.event.pageY + 10) + "px")
-      .transition()
-      .duration(200)
-      .style("opacity", .9);
-    }
+           // Add x-axis label based on the selected x-axis variable
+           const xAxisLabels = {
+               'dystopia': 'Dystopia residual',
+               'log-gdp': 'Log GDP per capita',
+               'social': 'Social support',
+               'healthy': 'Healthy life expectancy',
+               'freedom': 'Freedom to make life choices',
+               'generosity': 'Generosity',
+               'perceptions': 'Perceptions of corruption'
+           };
 
-  let mouseLeave = function(d) {
-    d3.selectAll(".Country")
-      .transition()
-      .duration(200)
-      .style("opacity", .8)
-    d3.select(this)
-      .transition()
-      .duration(200)
-      .style("stroke", "transparent")
-    tooltip.transition()
-      .duration(200)
-      .style("opacity", 0);
-    }
+           // Add x-axis
+           svg.append("g")
+               .attr("transform", "translate(0," + height + ")")
+               .call(d3.axisBottom(xScale))
+               .append("text")
+               .attr("x", width / 2)
+               .attr("y", margin.bottom - 10)
+               .attr("dy", "0.71em")
+               .attr("fill", "#000")
+               .text(xAxisLabels[selectedXAxis]);
 
-    // Zooming behaviour
-    const zoomFunction = d3.zoom()
-        .scaleExtent([1, 8])
-        .on("zoom", zoomed);
+           // Add y-axis
+           svg.append("g")
+               .call(d3.axisLeft(yScale))
+               .append("text")
+               .attr("transform", "rotate(-90)")
+               .attr("y", -margin.left)
+               .attr("x", -height / 2)
+               .attr("dy", "0.71em")
+               .attr("fill", "#000")
+               .text("Happiness Index");
 
-    function zoomed() {
-        svg.selectAll("path")
-            .attr("transform", d3.event.transform);
-    }
+           // Tooltip
+           var tooltip = d3.select("#scatter-plot")
+               .append("div")
+               .style("opacity", 0)
+               .attr("class", "tooltip")
+               .style("background-color", "white")
+               .style("border", "solid")
+               .style("border-width", "2px")
+               .style("border-radius", "5px")
+               .style("padding", "5px");
 
-    svg.call(zoomFunction);
-    
-     // Draw the map
-    svg.append("g")
+           function mouseover(d) {
+               tooltip
+                   .style("opacity", 1);
+               d3.select(this)
+                   .style("stroke", "black")
+                   .style("opacity", 1);
+           }
 
-        .selectAll("path")
-        .data(topo.features)
-        .enter()
-        .append("path")
-      // draw each country
-        .attr("d", d3.geoPath()
-        .projection(projection)
-      )
-      // set the color of each country
-      .attr("fill", function (d) {
-        d.Happiness = data.get(d.id) || 0;
-        return colorScale(d.Happiness);
-      })
-      .style("stroke", "transparent")
-      .attr("class", function(d){ return "Country" } )
-      .style("opacity", .8)
-      .on("mouseover", mouseOver )
-      .on("mouseleave", mouseLeave )
-    
-    // Call zoomToBoundingBox with the desired bounding box
-    const boundingBox = [[-180, -90], [180, 90]]; // Modify this bounding box as needed
-    const initialZoom = zoomToBoundingBox(boundingBox);
+           function mousemove(d) {
+               tooltip
+                   .html("Country: " + d.Name)
+                   .style("left", (d3.mouse(this)[0] + 70) + "px")
+                   .style("top", (d3.mouse(this)[1]) + "px");
+           }
 
-    // Apply the initial zoom and pan to the map
-    svg.call(zoomFunction.transform, d3.zoomIdentity.translate(width / 2, height / 2).scale(initialZoom.zoom).translate(-initialZoom.center[0], -initialZoom.center[1]));
-}
+           function mouseleave(d) {
+               tooltip
+                   .style("opacity", 0);
+               d3.select(this)
+                   .style("stroke", "none")
+                   .style("opacity", 0.8);
+           }
+       }
+   });
+});
