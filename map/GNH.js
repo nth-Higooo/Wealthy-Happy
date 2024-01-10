@@ -7,8 +7,6 @@ d3.csv("data/gnh_data.csv").then(data => {
        let selectedXAxis = 'Dystopia residual';
        var xAxisSelector = document.getElementById('xAxisSelector')
         xAxisSelector.addEventListener('change',(event) => updateScatterPlot())
-       var yearSelector = document.getElementById('xAxisSelector')
-        yearSelector.addEventListener('change',(event) => updateScatterPlot())
        // Function to update the scatter plot based on user selections
        function updateScatterPlot() {
             console.log('haha') //DEBUGGING
@@ -22,6 +20,7 @@ d3.csv("data/gnh_data.csv").then(data => {
 
        // Function to draw the scatter plot
        function drawScatterPlot() {
+           d3.select('#scatter-plot').selectAll('*').remove();
            // Filter data based on the selected year
            const filteredData = data.filter(d => +d.Year === selectedYear);
 
