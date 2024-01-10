@@ -1,24 +1,16 @@
- // Read the CSV file
-   d3.csv("data/gnh_data.csv").then(data => {
+// Read the CSV file
+d3.csv("data/gnh_data.csv").then(data => {
     
-    //     return{
-    //     country : +d.Name,
-    //     year : +d.Year,
-    //     Dystopia: +d['Dystopia residual'],
-    //     lgdp: +d['Log GDP per capita'],
-    //     social: +d['Social Support'],
-    //     healthy: +d['Healthy life expectancy'] ,
-    //     freedom: +d['Freedom to make life choices'],
-    //     generosity: +d['Generosity'],
-    //     perception: +d['Perceptions of corruption']
-    //    }
-       
+       d3.select("#scatter-plot").selectAll("*").remove();
+
        // Set up the initial year and x-axis variable
        let selectedYear = 2013;
        let selectedXAxis = 'Dystopia residual';
-
+       var xAxisSelector = document.getElementById('xAxisSelector')
+        xAxisSelector.addEventListener('change',(event) => updateScatterPlot())
        // Function to update the scatter plot based on user selections
        function updateScatterPlot() {
+            console.log('haha') //DEBUGGING
            selectedYear = parseInt(document.getElementById("yearSelector").value, 10);
            selectedXAxis = document.getElementById("xAxisSelector").value;
            drawScatterPlot();
@@ -58,8 +50,8 @@
                .data(filteredData)
                .enter().append("circle")
                .attr("cx", d => xScale(+d[selectedXAxis]))
-               .attr("cy", d => yScale(+d.happiness))
-               .attr("r", 15) // Radius of the circle
+               .attr("cy", d => yScale(+d.Happiness))
+               .attr("r", 4) // Radius of the circle
                .on("mouseover", mouseover)
                .on("mousemove", mousemove)
                .on("mouseleave", mouseleave);
@@ -131,5 +123,4 @@
                    .style("opacity", 0.8);
            }
        }
-   });
-
+    });
