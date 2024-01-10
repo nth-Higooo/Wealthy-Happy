@@ -1,13 +1,14 @@
 // Read the CSV file
 d3.csv("data/gnh_data.csv").then(data => {
     
-       d3.select("#scatter-plot").selectAll("*").remove();
 
        // Set up the initial year and x-axis variable
        let selectedYear = 2013;
        let selectedXAxis = 'Dystopia residual';
        var xAxisSelector = document.getElementById('xAxisSelector')
         xAxisSelector.addEventListener('change',(event) => updateScatterPlot())
+       var yearSelector = document.getElementById('xAxisSelector')
+        yearSelector.addEventListener('change',(event) => updateScatterPlot())
        // Function to update the scatter plot based on user selections
        function updateScatterPlot() {
             console.log('haha') //DEBUGGING
@@ -45,6 +46,7 @@ d3.csv("data/gnh_data.csv").then(data => {
                .domain([0,10])
                .range([height, 0]);
 
+           svg.selectAll("circle").remove();
            // Add circles to represent data points
            svg.selectAll("circle")
                .data(filteredData)
@@ -55,6 +57,8 @@ d3.csv("data/gnh_data.csv").then(data => {
                .on("mouseover", mouseover)
                .on("mousemove", mousemove)
                .on("mouseleave", mouseleave);
+            
+               
 
            // Add x-axis label based on the selected x-axis variable
            const xAxisLabels = {
@@ -123,4 +127,6 @@ d3.csv("data/gnh_data.csv").then(data => {
                    .style("opacity", 0.8);
            }
        }
+
+
     });
