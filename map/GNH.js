@@ -1,15 +1,21 @@
  // Read the CSV file
    d3.csv("data/gnh_data.csv").then(data => {
-    // Use it when the xAxisLabels can't take data
+    
     //     return{
     //     country : +d.Name,
     //     year : +d.Year,
     //     Dystopia: +d['Dystopia residual'],
+    //     lgdp: +d['Log GDP per capita'],
+    //     social: +d['Social Support'],
+    //     healthy: +d['Healthy life expectancy'] ,
+    //     freedom: +d['Freedom to make life choices'],
+    //     generosity: +d['Generosity'],
+    //     perception: +d['Perceptions of corruption']
     //    }
        
        // Set up the initial year and x-axis variable
        let selectedYear = 2013;
-       let selectedXAxis = 'dystopia';
+       let selectedXAxis = 'Dystopia residual';
 
        // Function to update the scatter plot based on user selections
        function updateScatterPlot() {
@@ -44,7 +50,7 @@
                .range([0, width]);
 
            const yScale = d3.scaleLinear()
-               .domain([d3.min(filteredData, d => +d.happiness), d3.max(filteredData, d => +d.happiness)])
+               .domain([0,10])
                .range([height, 0]);
 
            // Add circles to represent data points
@@ -53,7 +59,7 @@
                .enter().append("circle")
                .attr("cx", d => xScale(+d[selectedXAxis]))
                .attr("cy", d => yScale(+d.happiness))
-               .attr("r", 5) // Radius of the circle
+               .attr("r", 15) // Radius of the circle
                .on("mouseover", mouseover)
                .on("mousemove", mousemove)
                .on("mouseleave", mouseleave);
