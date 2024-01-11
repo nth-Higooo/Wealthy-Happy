@@ -1,15 +1,15 @@
-// Read the CSV file
-d3.csv("data/gnh_data.csv").then(data => {
-    
-    const findFlag = (countryName) => {
-        
-    }
-    
-    // Set up the initial year and x-axis variable
-    let selectedYear = 2013;
-    let selectedXAxis = 'Dystopia residual';
-    var xAxisSelector = document.getElementById('xAxisSelector')
-    xAxisSelector.addEventListener('change', (event) => updateScatterPlot());
+ // Read the CSV file
+   d3.csv("data/gnh_data.csv").then(data => {
+    // Use it when the xAxisLabels can't take data
+    //     return{
+    //     country : +d.Name,
+    //     year : +d.Year,
+    //     Dystopia: +d['Dystopia residual'],
+    //    }
+       
+       // Set up the initial year and x-axis variable
+       let selectedYear = 2013;
+       let selectedXAxis = 'dystopia';
 
     // Function to update the scatter plot based on user selections
     function updateScatterPlot() {
@@ -86,86 +86,39 @@ d3.csv("data/gnh_data.csv").then(data => {
             .attr("fill","white")
             .text("Happiness Index");
 
+           // Tooltip
+           var tooltip = d3.select("#scatter-plot")
+               .append("div")
+               .style("opacity", 0)
+               .attr("class", "tooltip")
+               .style("background-color", "white")
+               .style("border", "solid")
+               .style("border-width", "2px")
+               .style("border-radius", "5px")
+               .style("padding", "5px");
 
+           function mouseover(d) {
+               tooltip
+                   .style("opacity", 1);
+               d3.select(this)
+                   .style("stroke", "black")
+                   .style("opacity", 1);
+           }
 
-svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(xScale))
-    .selectAll("*")
-    .style("stroke", "white")
-    .style("fill", "white")
-    .style("stroke-width", "2px")
-    .style("font-size", "12px")
-    .style("font-family", "Arial"); 
+           function mousemove(d) {
+               tooltip
+                   .html("Country: " + d.Name)
+                   .style("left", (d3.mouse(this)[0] + 70) + "px")
+                   .style("top", (d3.mouse(this)[1]) + "px");
+           }
 
+           function mouseleave(d) {
+               tooltip
+                   .style("opacity", 0);
+               d3.select(this)
+                   .style("stroke", "none")
+                   .style("opacity", 0.8);
+           }
+       }
+   });
 
-svg.append("g")
-    .call(d3.axisLeft(yScale))
-    .selectAll("*")
-    .style("stroke", "white")
-    .style("fill", "white")
-    .style("stroke-width", "2px")
-    .style("font-size", "12px")
-    .style("font-family", "Arial"); 
-
-        // // Tooltip
-        // const tooltipscatter = d3.select("#scatter-plot")
-        //     .append("div")
-        //     .attr("class", "tooltip")
-        //     .style("position", "absolute")
-        //     .style("display", "none")
-        //     .style("background-color", "white")
-        //     .style("border", "1px solid black")
-        //     .style("padding", "5px")
-        //     .style("font-size", "12px");
-
-            
-
-        // Add circles to represent data points
-        svg.selectAll("circle")
-            .data(filteredData)
-            .enter().append("circle")
-            .attr("cx", d => xScale(+d[selectedXAxis]))
-            .attr("cy", d => yScale(+d.Happiness))
-            .attr("r", 5) // Radius of the circle
-            .style("fill", "lightgreen")
-            .style("opacity", "0.6")
-
-            
-
-            .on("mouseover",  (e,d) => {
-                //country flag image
-                var flag= document.querySelector("#country-flag");
-                fetch('data/country-flag.json')
-                    .then((response) => response.json())
-                    .then((json) => {
-                        var countryFlag = json
-                        // console.log(countryFlag)
-                        for(const country in countryFlag) {
-                            if(countryFlag[country]['name']==d['Name']) {
-                                console.log(countryFlag[country]['file_url'])
-                                flag.src = countryFlag[country]['file_url']
-                            }
-                        }
-                    });
-
-                //country info
-                var tooltipSection = document.querySelector('#tooltip')
-                var countryName = document.querySelector("#country-name");
-                countryName.textContent = d['Name']
-                
-                var happinesScore = document.querySelector('#happiness-score')
-                happinesScore.textContent='Happiness score: '+d['Happiness']
-            })
-            .on("mouseout", d => {
-                
-            });
-        
-        svg.selectAll("circle")
-            .append('title')
-            .text(d=> d['Name'])
-            // .style("font-size", "20px")
-            // .style("fill", "blue")
-            // .style("text-align", "center");
-    }
-});
