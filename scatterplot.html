@@ -15,7 +15,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Notable&family=Poller+One&family=Pontano+Sans:wght@300&family=Sulphur+Point&display=swap" rel="stylesheet">
-    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3.v5.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
     <!--HEADER SECTION-->
@@ -37,35 +38,58 @@
     </header>
 
     <!--SCATTERPLOT SECTION-->
+    <br></br>
+    <br></br>
+    <div id="container" style="display: flex; color: white; margin-top: 3em; padding-left: 10em; padding-right: 10em;">
+        <div id ="main" style="padding: 4em">
+            <div id="selections" style="display: flex; justify-content: space-between;">
+                <div id="year-selection">
+                    <label for="yearSelector">Select Year:</label>
+                    <select id="yearSelector">
+                        <option value="2013">2013</option>
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                    </select>
+                </div>
+                
+                <div id="factor-selection">
+                    <label for="xAxisSelector">Showing data for:</label>
+                    <select id="xAxisSelector">
+                        <option value="Dystopia residual">DYSTOPIA RESIDUAL</option>
+                        <option value="Log GDP per capita">LOG GDP PER CAPITA</option>
+                        <option value="Social support">SOCIAL SUPPORT</option>
+                        <option value="Healthy life expectancy">HEALTHY LIFE EXPECTANCY</option>
+                        <option value="Freedom to make life choices">FREEDOM TO MAKE LIFE CHOICES</option>
+                        <option value="Generosity">GENEROSITY</option>
+                        <option value="Perceptions of corruption">PERCEPTIONS OF CORRUPTION</option>
+                    </select>
+                </div>
+                <!-- Dropdown for selecting the x-axis variable -->
+            </div>
+            <svg id="scatter-plot"></svg>
+        </div>
+        <div id="tooltip" width="100%" style="flex: 1; padding: 2em">
+           <h1 id="country-name" style="text-align: center;"></h1>
+           <div style="display: flex; justify-content: center; margin:1em; height:150px">
+                <img src="" alt="" id="country-flag">
+           </div>
+           
+           <h1 id="happiness-score" style="text-align: center;"></h1>
+        </div>
+    </div>
+    
     <!-- Dropdown for selecting the year -->
-<label for="yearSelector">Select Year:</label>
-<select id="yearSelector" onchange="updateScatterPlot()">
-    <option value="2013">2013</option>
-    <option value="2014">2014</option>
-    <option value="2015">2015</option>
-    <option value="2016">2016</option>
-    <option value="2017">2017</option>
-    <option value="2018">2018</option>
-    <option value="2019">2019</option>
-    <option value="2020">2020</option>
-    <option value="2021">2021</option>
-    <option value="2022">2022</option>
-</select>
 
-<!-- Dropdown for selecting the x-axis variable -->
-<label for="xAxisSelector">Showing data for:</label>
-<select id="xAxisSelector" onchange="updateScatterPlot()">
-    <option value="Dystopia residual">DYSTOPIA RESIDUAL</option>
-    <option value="Log GDP per capita">LOG GDP PER CAPITA</option>
-    <option value="Social support">SOCIAL SUPPORT</option>
-    <option value="Healthy life expectancy">HEALTHY LIFE EXPECTANCY</option>
-    <option value="Freedom to make life choices">FREEDOM TO MAKE LIFE CHOICES</option>
-    <option value="Generosity">GENEROSITY</option>
-    <option value="Perceptions of corruption">PERCEPTIONS OF CORRUPTION</option>
-</select>
 
-<svg id="scatter-plot"></svg>
     <!-- Include separate JavaScript file for scatter plot -->
+    <script src="index.js"></script>
     <script src="./map/GNH.js"></script>
 </body>
 </html>
