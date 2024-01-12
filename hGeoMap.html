@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>DASHBOARD</title>
+        <title>GEOMAP</title>
         <!--web logo-->
         <link rel="icon" href="img\logo.png" type="image/icon"/>
         <!--custom stylesheet-->
@@ -31,8 +31,7 @@
             <nav class="navbar">
                 <a href="index.html">HOME</a>
                 <a href="aboutUs.html">ABOUT US</a>
-                <a href="dashboard.html">DASHBOARD</a>
-                <a href="scatterplot.html">SCATTERPLOT</a>
+                <a href="geoMap.html">GEOMAP</a>
             </nav>
 
             <div class="icon">
@@ -41,9 +40,9 @@
 
         </header>
 
-        <!--DASHBOARD SECTION-->
-        <section class="dashboard">
-            <h2 class="title">DASHBOARD</h2>
+        <!--geoMap SECTION-->
+        <section class="geoMap">
+            <h2 class="title">GEOMAP</h2>
             <div class="world_map">
                 <h3 class="dash_title">The World View</h3>
                 
@@ -52,17 +51,17 @@
                         <label for="year">Year:</label>
                         <select name="year" id="years-menu"></select>
                     </div>
-                    <button class="wrl_btn" id="GDP">GDP</button>
+                    <button class="wrl_btn" id="GDP"><a href="geoMap.html">GDP</a></button>
+                    <button class="wrl_btn selected" id="GNH">Happiness</button>
                 </div>
                 
                 <!-- WORLD MAP CODE HERE-->
-                <svg class="map" id="GDPmap" width="400" height="300"></svg>
+                <svg class="map" id="GNHmap" width="400" height="300"></svg>
             </div>
         </section>
 
         <script src="index.js"></script>
-        <script src="./map/GDP.js"></script>
-
+        <script src="./map/GNH.js"></script>
         
     </body>
 </html>
