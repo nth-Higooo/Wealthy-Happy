@@ -9,7 +9,7 @@ d3.csv("data/gnh_data.csv").then(data => {
 
     // Function to update the scatter plot based on user selections
     function updateScatterPlot() {
-        console.log('haha') // DEBUGGING
+        
         selectedYear = parseInt(document.getElementById("yearSelector").value, 10);
         selectedXAxis = document.getElementById("xAxisSelector").value;
         drawScatterPlot();
@@ -150,7 +150,7 @@ d3.csv("data/gnh_data.csv").then(data => {
                         // console.log(countryFlag)
                         for(const country in countryFlag) {
                             if(countryFlag[country]['name']==d['Name']) {
-                                console.log(countryFlag[country]['file_url'])
+                                // console.log(countryFlag[country]['file_url'])
                                 flag.src = countryFlag[country]['file_url']
                             }
                         }
@@ -158,7 +158,7 @@ d3.csv("data/gnh_data.csv").then(data => {
 
                 //country info
                 // barGraph(data)
-                console.log(d)
+                    barGraph(d)
 
                 var countryName = document.querySelector("#country-name");
                 countryName.textContent = d['Name']
@@ -176,49 +176,53 @@ d3.csv("data/gnh_data.csv").then(data => {
         }
 
         function barGraph(data) {
+            d3.select("#barGraph").selectAll("*").remove();
             const factors = ['Dystopia residual','Log GDP per capita','Social support','Healthy life expectancy',
                             'Freedom to make life choices','Generosity','Perceptions of corruption']
-            const country = []
+            const countryFactors = []
             for(const prop in data){
-                country.push({prop: data[prop]})
+                let temp = prop
+                if(factors.includes(prop)){
+
+                    countryFactors.push({'factor': temp, 'value': data[prop]})
+                }
             }
-            const svgWidth = 500;
+            console.log(countryFactors)
+            const svgWidth = 800;
             const svgHeight = 150;
         
-            const svg = d3.select("#barGraph")
+            const svg2 = d3.select("#barGraph")
                 .append("svg")
                 .attr("width", svgWidth)
                 .attr("height", svgHeight);
         
             const xBarScale = d3.scaleLinear()
                 .domain([0, 4])
-                .range([0, svgWidth]);
+                .range([0, svgWidth/2]);
 
             const yBarScale = d3.scaleBand()
-            .domain()
-            .range([0,height])
+            .domain(factors)
+            .range([0,svgHeight])
             .padding(0.1);
         
-            const bars = svg.selectAll("g")
-                .data(country)
-                .enter().append("g")
-                .attr("transform", (d, i) => `translate(0, ${i * 80})`);
+            
         
-            bars.selectAll("rect")
-                .data(country)
+            svg2.selectAll("rect")
+                .data(countryFactors)
                 .enter().append("rect")
                 .attr("class", "bar")
-                .attr("width", d => xBarScale(+d))
-                .attr("height", 20)
-                .attr("x", 0)
-                .attr("y", (d, i) => i * 25);
+                .attr("width", d => xBarScale(+d.value) )
+                .attr("height", yBarScale.bandwidth())
+                .attr("x", 300)
+                .attr("y", (d, i) => yBarScale(d.factor))
+                .style('fill', '#ff964f')
         
-            bars.selectAll("text")
-                .data(country)
+            svg2.selectAll("text")
+                .data(countryFactors)
                 .enter().append("text")
-                .attr("x", d => xBarScale(+d) + 5)
-                .attr("y", (d, i) => i * 25 + 14)
-                .text(d => d);
+                .attr("x", d =>  140)
+                .attr("y", d => yBarScale(d.factor)+yBarScale.bandwidth()/2)
+                .text(d => d.factor)
         }
         
     }) 
