@@ -28,38 +28,32 @@ For more details, please refer to the [proposal document]().
 
 ## Documentation
 
-To quickly serve the project files locally during development, use `http-server`. Follow these steps:
+To quickly serve the project files locally during development, you can use Python's built-in HTTP server. Follow these steps:
 
-1. **Install Node.js and npm:**
-   - Make sure you have Node.js and npm installed on your machine.
-
-2. **Install http-server:**
+1. **Navigate to Your Project Directory:**
    - Open your terminal or command prompt.
-   - Run the following command to install `http-server` globally:
+   - Use the `cd` command to navigate to the directory containing your website files:
      ```bash
-     npm install -g http-server
+     cd /path/to/your/project
      ```
 
-3. **Serve Your Files:**
-   - Navigate to the directory containing your website files.
+2. **Serve Your Files:**
    - Run the following command to start the server:
      ```bash
-     npx http-server
+     python[3] -m http.server
      ```
 
-   Alternatively, if you have installed `http-server` globally, you can use:
-     ```bash
-     http-server
-     ```
+   This command will start the server on port 8000 by default. You can access your site by navigating to [http://localhost:8000](http://localhost:8000) in your web browser.
 
-   The server will run on port 8080 by default. You can access your site by navigating to [http://localhost:8080](http://localhost:8080) in your web browser.
-
-4. **Specify a Port (Optional):**
-   - If you want to use a specific port, you can specify it with the `-p` option:
+3. **Specify a Port (Optional):**
+   - If you want to use a specific port, you can specify it with the following port:
      ```bash
-     npx http-server -p 3000
+     python -m http.server 3000
      ```
      This example starts the server on port 3000.
+
+The Python HTTP server is a simple and convenient way to serve static files for development purposes. If you don't have Python installed, you can download it from [https://www.python.org/](https://www.python.org/).
+
 
 
 ## About us
