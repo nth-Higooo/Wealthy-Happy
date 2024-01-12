@@ -84,7 +84,7 @@ function update2014() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
         .defer(d3.csv, "data/gdp_data.csv", function(d) { 
-            if(d.Year === "2014") {
+            if(d.year === "2014") {
                 data.set(d.code, +d.total);
             }
         })
@@ -94,7 +94,7 @@ function update2015() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
         .defer(d3.csv, "data/gdp_data.csv", function(d) { 
-            if(d.Year === "2015") {
+            if(d.year === "2015") {
                 data.set(d.code, +d.total);
             }
         })
@@ -104,7 +104,7 @@ function update2016() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
         .defer(d3.csv, "data/gdp_data.csv", function(d) { 
-            if(d.Year === "2016") {
+            if(d.year === "2016") {
                 data.set(d.code, +d.total);
             }
         })
@@ -114,7 +114,7 @@ function update2017() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
         .defer(d3.csv, "data/gdp_data.csv", function(d) { 
-            if(d.Year === "2017") {
+            if(d.year === "2017") {
                 data.set(d.code, +d.total);
             }
         })
@@ -124,7 +124,7 @@ function update2018() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
         .defer(d3.csv, "data/gdp_data.csv", function(d) { 
-            if(d.Year === "2018") {
+            if(d.year === "2018") {
                 data.set(d.code, +d.total);
             }
         })
@@ -134,7 +134,7 @@ function update2019() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
         .defer(d3.csv, "data/gdp_data.csv", function(d) { 
-            if(d.Year === "2019") {
+            if(d.year === "2019") {
                 data.set(d.code, +d.total);
             }
         })
@@ -144,7 +144,7 @@ function update2020() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
         .defer(d3.csv, "data/gdp_data.csv", function(d) { 
-            if(d.Year === "2020") {
+            if(d.year === "2020") {
                 data.set(d.code, +d.total);
             }
         })
@@ -154,7 +154,7 @@ function update2021() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
         .defer(d3.csv, "data/gdp_data.csv", function(d) { 
-            if(d.Year === "2021") {
+            if(d.year === "2021") {
                 data.set(d.code, +d.total);
             }
         })
@@ -164,7 +164,7 @@ function update2022() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
         .defer(d3.csv, "data/gdp_data.csv", function(d) { 
-            if(d.Year === "2022") {
+            if(d.year === "2022") {
                 data.set(d.code, +d.total);
             }
         })
@@ -207,7 +207,7 @@ function ready(error, topo) {
       .duration(200)
       .style("opacity", 1)
       .style("stroke", "black")
-    tooltip.html(`<strong>${d.properties.name}</strong><br/>GDP: ${d.total.toLocaleString()} B`)
+    tooltip.html(`<strong>${d.properties.name}</strong><br/>GDP: ${d.total.toLocaleString()} M`)
       .style("left", (d3.event.pageX + 10) + "px")
       .style("top", (d3.event.pageY + 10) + "px")
       .transition()

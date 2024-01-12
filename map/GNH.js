@@ -1,4 +1,4 @@
-var svg = d3.select("#GHNmap"),
+var svg = d3.select("#GNHmap"),
   width = +svg.attr("width"),
   height = +svg.attr("height");
 
@@ -12,15 +12,15 @@ var projection = d3.geoMercator()
 // Data and color scale
 var data = d3.map();
 var colorScale = d3.scaleThreshold()
-  .domain([100000, 1000000, 10000000, 30000000, 100000000, 500000000])
-  .range(d3.schemeBlues[3]);
+  .domain([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+  .range(d3.schemeBlues[9]);
 
 //Select years
 const years = [{year: 2013, value: "data1"}, {year: 2014, value: "data2"}, 
             {year: 2015, value: "data3"}, {year: 2016, value: "data4"},
             {year: 2017, value: "data5"}, {year: 2018, value: "data6"}, 
             {year: 2019, value: "data7"}, {year: 2020, value: "data8"},
-            {year: 2021, value: "data9"}, {year: 2022, value: "data10"}]
+            {year: 2021, value: "data9"}, {year: 2022, value: "data10"}] 
 const menuYear = d3.select("#years-menu")
     .style("border-radius", "3px")
     .style("right", "210px");
@@ -73,9 +73,9 @@ d3.select("#years-menu").on("change", function() {
 function update2013() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "data/gnh_data.csv", function(d) { 
+        .defer(d3.csv, "/data/hapiness.csv", function(d) { 
             if(d.year === "2013") {
-                data.set(d.Code, +d.Happiness);
+                data.set(d.code, +d.Score);
             }
         })
         .await(ready);
@@ -83,9 +83,9 @@ function update2013() {
 function update2014() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "data/gnh_data.csv", function(d) { 
+        .defer(d3.csv, "/data/hapiness.csv", function(d) { 
             if(d.year === "2014") {
-                data.set(d.Code, +d.Happiness);
+                data.set(d.code, +d.Score);
             }
         })
         .await(ready);
@@ -93,9 +93,9 @@ function update2014() {
 function update2015() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "/data/gnh_data.csv", function(d) { 
+        .defer(d3.csv, "//data/hapiness.csv", function(d) { 
             if(d.year === "2015") {
-                data.set(d.Code, +d.Happiness);
+                data.set(d.code, +d.Score);
             }
         })
         .await(ready);
@@ -103,9 +103,9 @@ function update2015() {
 function update2016() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "/data/gnh_data.csv", function(d) { 
+        .defer(d3.csv, "//data/hapiness.csv", function(d) { 
             if(d.year === "2016") {
-                data.set(d.Code, +d.Happiness);
+                data.set(d.code, +d.Score);
             }
         })
         .await(ready);
@@ -113,9 +113,9 @@ function update2016() {
 function update2017() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "/data/gnh_data.csv", function(d) { 
+        .defer(d3.csv, "//data/hapiness.csv", function(d) { 
             if(d.year === "2017") {
-                data.set(d.Code, +d.Happiness);
+                data.set(d.code, +d.Score);
             }
         })
         .await(ready);
@@ -123,9 +123,9 @@ function update2017() {
 function update2018() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "/data/gnh_data.csv", function(d) { 
+        .defer(d3.csv, "//data/hapiness.csv", function(d) { 
             if(d.year === "2018") {
-                data.set(d.Code, +d.Happiness);
+                data.set(d.code, +d.Score);
             }
         })
         .await(ready);
@@ -133,9 +133,9 @@ function update2018() {
 function update2019() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "/data/gnh_data.csv", function(d) { 
+        .defer(d3.csv, "//data/hapiness.csv", function(d) { 
             if(d.year === "2019") {
-                data.set(d.Code, +d.Happiness);
+                data.set(d.code, +d.Score);
             }
         })
         .await(ready);
@@ -143,9 +143,9 @@ function update2019() {
 function update2020() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "/data/gnh_data.csv", function(d) { 
+        .defer(d3.csv, "//data/hapiness.csv", function(d) { 
             if(d.year === "2020") {
-                data.set(d.Code, +d.Happiness);
+                data.set(d.code, +d.Score);
             }
         })
         .await(ready);
@@ -153,9 +153,9 @@ function update2020() {
 function update2021() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "/data/gnh_data.csv", function(d) { 
+        .defer(d3.csv, "//data/hapiness.csv", function(d) { 
             if(d.year === "2021") {
-                data.set(d.Code, +d.Happiness);
+                data.set(d.code, +d.Score);
             }
         })
         .await(ready);
@@ -163,9 +163,9 @@ function update2021() {
 function update2022() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "/data/gnh_data.csv", function(d) { 
+        .defer(d3.csv, "//data/hapiness.csv", function(d) { 
             if(d.year === "2022") {
-                data.set(d.Code, +d.Happiness);
+                data.set(d.code, +d.Score);
             }
         })
         .await(ready);
@@ -207,7 +207,7 @@ function ready(error, topo) {
       .duration(200)
       .style("opacity", 1)
       .style("stroke", "black")
-    tooltip.html(`<strong>${d.properties.name}</strong><br/>GNH: ${d.Happiness.toLocaleString()} B`)
+    tooltip.html(`<strong>${d.properties.name}</strong><br/>Happiness Score: ${d.Score.toLocaleString()}`)
       .style("left", (d3.event.pageX + 10) + "px")
       .style("top", (d3.event.pageY + 10) + "px")
       .transition()
@@ -254,8 +254,8 @@ function ready(error, topo) {
       )
       // set the color of each country
       .attr("fill", function (d) {
-        d.Happiness = data.get(d.id) || 0;
-        return colorScale(d.Happiness);
+        d.Score = data.get(d.id) || 0;
+        return colorScale(d.Score);
       })
       .style("stroke", "transparent")
       .attr("class", function(d){ return "Country" } )
