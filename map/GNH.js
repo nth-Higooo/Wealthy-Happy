@@ -93,7 +93,7 @@ function update2014() {
 function update2015() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "//data/hapiness.csv", function(d) { 
+        .defer(d3.csv, "/data/hapiness.csv", function(d) { 
             if(d.year === "2015") {
                 data.set(d.code, +d.Score);
             }
@@ -103,7 +103,7 @@ function update2015() {
 function update2016() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "//data/hapiness.csv", function(d) { 
+        .defer(d3.csv, "/data/hapiness.csv", function(d) { 
             if(d.year === "2016") {
                 data.set(d.code, +d.Score);
             }
@@ -113,7 +113,7 @@ function update2016() {
 function update2017() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "//data/hapiness.csv", function(d) { 
+        .defer(d3.csv, "/data/hapiness.csv", function(d) { 
             if(d.year === "2017") {
                 data.set(d.code, +d.Score);
             }
@@ -123,7 +123,7 @@ function update2017() {
 function update2018() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "//data/hapiness.csv", function(d) { 
+        .defer(d3.csv, "/data/hapiness.csv", function(d) { 
             if(d.year === "2018") {
                 data.set(d.code, +d.Score);
             }
@@ -133,7 +133,7 @@ function update2018() {
 function update2019() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "//data/hapiness.csv", function(d) { 
+        .defer(d3.csv, "/data/hapiness.csv", function(d) { 
             if(d.year === "2019") {
                 data.set(d.code, +d.Score);
             }
@@ -143,7 +143,7 @@ function update2019() {
 function update2020() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "//data/hapiness.csv", function(d) { 
+        .defer(d3.csv, "/data/hapiness.csv", function(d) { 
             if(d.year === "2020") {
                 data.set(d.code, +d.Score);
             }
@@ -153,7 +153,7 @@ function update2020() {
 function update2021() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "//data/hapiness.csv", function(d) { 
+        .defer(d3.csv, "/data/hapiness.csv", function(d) { 
             if(d.year === "2021") {
                 data.set(d.code, +d.Score);
             }
@@ -163,7 +163,7 @@ function update2021() {
 function update2022() {
     d3.queue()
         .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-        .defer(d3.csv, "//data/hapiness.csv", function(d) { 
+        .defer(d3.csv, "/data/hapiness.csv", function(d) { 
             if(d.year === "2022") {
                 data.set(d.code, +d.Score);
             }
