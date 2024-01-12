@@ -1,13 +1,7 @@
-
-
 // Read the CSV file
 d3.csv("data/gnh_data.csv").then(data => {
-    
-    const findFlag = (countryName) => {
-        
-    }
-    
-    // Set up the initial year and x-axis variable
+    d3.csv("data/region.csv").then(regions => {
+        // Set up the initial year and x-axis variable
     let selectedYear = 2013;
     let selectedXAxis = 'Dystopia residual';
     var xAxisSelector = document.getElementById('xAxisSelector')
@@ -90,39 +84,40 @@ d3.csv("data/gnh_data.csv").then(data => {
 
 
 
-svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(xScale))
-    .selectAll("*")
-    .style("stroke", "white")
-    .style("fill", "white")
-    .style("stroke-width", "2px")
-    .style("font-size", "12px")
-    .style("font-family", "Arial"); 
+        svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(xScale))
+            .selectAll("*")
+            .style("stroke", "white")
+            .style("fill", "white")
+            .style("stroke-width", "2px")
+            .style("font-size", "12px")
+            .style("font-family", "Arial"); 
 
 
-svg.append("g")
-    .call(d3.axisLeft(yScale))
-    .selectAll("*")
-    .style("stroke", "white")
-    .style("fill", "white")
-    .style("stroke-width", "2px")
-    .style("font-size", "12px")
-    .style("font-family", "Arial"); 
+        svg.append("g")
+            .call(d3.axisLeft(yScale))
+            .selectAll("*")
+            .style("stroke", "white")
+            .style("fill", "white")
+            .style("stroke-width", "2px")
+            .style("font-size", "12px")
+            .style("font-family", "Arial"); 
 
-        // // Tooltip
-        // const tooltipscatter = d3.select("#scatter-plot")
-        //     .append("div")
-        //     .attr("class", "tooltip")
-        //     .style("position", "absolute")
-        //     .style("display", "none")
-        //     .style("background-color", "white")
-        //     .style("border", "1px solid black")
-        //     .style("padding", "5px")
-        //     .style("font-size", "12px");
 
-            
-
+        // const subRegion = ['Southern Asia', 'Northern Europe', 'Southern Europe','Northern Africa', 'Polynesia',
+        //                     'Sub-Saharan Africa', 'Latin America and the Caribean', 'Western Asia', 'Australia and New Zealand','Western Europe',
+        //                 'Eastern Europe','Northern America', 'South-eastern Asia', 'Eastern Asia', 'Central Asia','Micronesia',
+        //                 'Melanesia']
+        const colorRange = [
+            "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",
+            "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf",
+            "#aec7e8", "#ffbb78", "#98df8a", "#ff9896", "#c5b0d5",
+            "#c49c94", "#f7b6d2"
+          ]
+        const colorSubRegion = d3.scaleOrdinal().range(colorRange)
+        
+        
         // Add circles to represent data points
         svg.selectAll("circle")
             .data(filteredData)
@@ -130,8 +125,18 @@ svg.append("g")
             .attr("cx", d => xScale(+d[selectedXAxis]))
             .attr("cy", d => yScale(+d.Happiness))
             .attr("r", 5) // Radius of the circle
-            .style("fill", "lightgreen")
             .style("opacity", "0.6")
+     
+            .style("fill", d => {
+                let temp;
+                regions.forEach( region => {
+                    if(region['name']== d.Name){
+                        temp = (colorSubRegion(region['region']))
+                    }
+                })
+                return temp;
+          })
+            
 
             
 
@@ -152,7 +157,7 @@ svg.append("g")
                     });
 
                 //country info
-                var tooltipSection = document.querySelector('#tooltip')
+
                 var countryName = document.querySelector("#country-name");
                 countryName.textContent = d['Name']
                 
@@ -166,8 +171,6 @@ svg.append("g")
         svg.selectAll("circle")
             .append('title')
             .text(d=> d['Name'])
-            // .style("font-size", "20px")
-            // .style("fill", "blue")
-            // .style("text-align", "center");
-    }
+        }
+    }) 
 });
