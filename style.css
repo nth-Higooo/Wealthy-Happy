@@ -277,4 +277,10 @@ header {
     section {
         padding: 2rem;
     }
+
+    
+}
+.bar-text {
+    fill: white;
+    font-size: 12px;
 }
