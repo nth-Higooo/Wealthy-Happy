@@ -223,6 +223,7 @@ d3.csv("data/gnh_data.csv").then(data => {
                 .attr("x", d =>  140)
                 .attr("y", d => yBarScale(d.factor)+yBarScale.bandwidth()/2)
                 .text(d => d.factor)
+                .classed("bar-text", true)
         }
         
     }) 
