@@ -187,6 +187,53 @@ d3.csv("data/gnh_data.csv").then(data => {
             svg.selectAll("circle")
                 .append('title')
                 .text(d => d['Name'])
+
+            const legendData = [
+                { label: 'europe', color: 'orange' },
+                { label: 'america', color: 'red' },
+                { label: 'asia', color: 'blue' },
+                { label: 'africa', color: 'green' },
+                { label: 'australia', color: 'purple' },
+
+                // Add more legend items as needed
+            ];
+
+            const legend = svg.append("g")
+                .attr("class", "legend")
+                .attr("transform", "translate(" + (width - 20) + "," + (height -60) + ")"); // Adjust the translation to position the legend
+
+            const legendRectSize = 18;
+            const legendSpacing = 6;
+
+            const legendItems = legend.selectAll(".legend-item")
+                .data(legendData)
+                .enter()
+                .append("g")
+                .attr("class", "legend-item")
+                .attr("transform", function (d, i) {
+                    const height = legendRectSize + legendSpacing;
+                    const offset = height * legendData.length / 2;
+                    const horz = -2 * legendRectSize;
+                    const vert = i * height - offset;
+                    return "translate(" + horz + "," + vert + ")";
+                });
+
+            legendItems.append("rect")
+                .attr("width", legendRectSize)
+                .attr("height", legendRectSize)
+                .style("fill", function (d) {
+                    return d.color;
+                });
+
+            legendItems.append("text")
+                .attr("x", legendRectSize + legendSpacing)
+                .attr("y", legendRectSize - legendSpacing)
+                .text(function (d) {
+                    return d.label;
+                })
+                .style("font-size", "12px")
+                .style("font-family", "Arial")
+                .style("fill", "white");
         }
 
         function barGraph(data) {
