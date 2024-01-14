@@ -68,7 +68,8 @@ d3.csv("data/gnh_data.csv").then(data => {
                 .attr("dy", "0.71em")
                 .attr("fill", "#000")
                 .style("fill", "white")
-                .text(xAxisLabels[selectedXAxis]);
+                .text(xAxisLabels[selectedXAxis])
+                .attr("font-size", "14px");
 
             // Add y-axis
             svg.append("g")
@@ -80,7 +81,8 @@ d3.csv("data/gnh_data.csv").then(data => {
                 .attr("dy", "0.71em")
                 .attr("fill", "#000")
                 .attr("fill", "white")
-                .text("Happiness Index");
+                .text("Happiness Index")
+                .attr("font-size", "14px");
 
 
 
