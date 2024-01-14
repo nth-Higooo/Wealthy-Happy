@@ -189,18 +189,18 @@ d3.csv("data/gnh_data.csv").then(data => {
                 .text(d => d['Name'])
 
             const legendData = [
-                { label: 'europe', color: 'orange' },
-                { label: 'america', color: 'red' },
-                { label: 'asia', color: 'blue' },
-                { label: 'africa', color: 'green' },
-                { label: 'australia', color: 'purple' },
+                { label: 'Europe', color: 'orange' },
+                { label: 'America', color: 'red' },
+                { label: 'Asia', color: 'blue' },
+                { label: 'Africa', color: 'green' },
+                { label: 'Oceania', color: 'purple' },
 
                 // Add more legend items as needed
             ];
 
             const legend = svg.append("g")
                 .attr("class", "legend")
-                .attr("transform", "translate(" + (width - 20) + "," + (height -60) + ")"); // Adjust the translation to position the legend
+                .attr("transform", "translate(" + (width - 13) + "," + (height -60) + ")"); // Adjust the translation to position the legend
 
             const legendRectSize = 18;
             const legendSpacing = 6;

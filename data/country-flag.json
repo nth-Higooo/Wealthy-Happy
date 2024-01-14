@@ -338,14 +338,14 @@
     {
       "url": "/wiki/Republic_of_the_Congo",
       "alpha3": "COG",
-      "name": "Congo",
+      "name": "Congo (Brazzaville)",
       "file_url": "//upload.wikimedia.org/wikipedia/commons/9/92/Flag_of_the_Republic_of_the_Congo.svg",
       "license": "Public domain"
     },
     {
       "url": "/wiki/Democratic_Republic_of_the_Congo",
       "alpha3": "COD",
-      "name": "Congo - Democratic Republic of the",
+      "name": "Congo (Kinshasa)",
       "file_url": "//upload.wikimedia.org/wikipedia/commons/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg",
       "license": "Public domain"
     },
@@ -401,7 +401,7 @@
     {
       "url": "/wiki/Czech_Republic",
       "alpha3": "CZE",
-      "name": "Czechia",
+      "name": "Czech Republic",
       "file_url": "//upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_Czech_Republic.svg",
       "license": "Public domain"
     },
@@ -709,7 +709,7 @@
     {
       "url": "/wiki/Iran",
       "alpha3": "IRN",
-      "name": "Iran (Islamic Republic of)",
+      "name": "Iran",
       "file_url": "//upload.wikimedia.org/wikipedia/commons/c/ca/Flag_of_Iran.svg",
       "license": "Public domain"
     },
@@ -807,7 +807,7 @@
     {
       "url": "/wiki/South_Korea",
       "alpha3": "KOR",
-      "name": "Korea - Republic of",
+      "name": "South Korea",
       "file_url": "//upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg",
       "license": "Public domain"
     },
@@ -828,7 +828,7 @@
     {
       "url": "/wiki/Laos",
       "alpha3": "LAO",
-      "name": "Lao People's Democratic Republic",
+      "name": "Laos",
       "file_url": "//upload.wikimedia.org/wikipedia/commons/5/56/Flag_of_Laos.svg",
       "license": "Public domain"
     },
@@ -975,7 +975,7 @@
     {
       "url": "/wiki/Moldova",
       "alpha3": "MDA",
-      "name": "Moldova - Republic of",
+      "name": "Moldova",
       "file_url": "//upload.wikimedia.org/wikipedia/commons/2/27/Flag_of_Moldova.svg",
       "license": "Public domain"
     },
@@ -1150,7 +1150,7 @@
     {
       "url": "/wiki/State_of_Palestine",
       "alpha3": "PSE",
-      "name": "Palestine - State of",
+      "name": "Palestine",
       "file_url": "//upload.wikimedia.org/wikipedia/commons/0/00/Flag_of_Palestine.svg",
       "license": "Public domain"
     },
@@ -1234,7 +1234,7 @@
     {
       "url": "/wiki/Russia",
       "alpha3": "RUS",
-      "name": "Russian Federation",
+      "name": "Russia",
       "file_url": "//upload.wikimedia.org/wikipedia/en/f/f3/Flag_of_Russia.svg",
       "license": "Public domain"
     },
@@ -1244,6 +1244,10 @@
       "name": "Rwanda",
       "file_url": "//upload.wikimedia.org/wikipedia/commons/1/17/Flag_of_Rwanda.svg",
       "license": "Public domain"
+    },
+    {
+      "name": "Saudi Arabia",
+      "file_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Flag_of_Saudi_Arabia.svg/1280px-Flag_of_Saudi_Arabia.svg.png"
     },
     {
       "url": "/wiki/Saint_Barth%C3%A9lemy",
@@ -1465,7 +1469,7 @@
     {
       "url": "/wiki/Tanzania",
       "alpha3": "TZA",
-      "name": "Tanzania - United Republic of",
+      "name": "Tanzania",
       "file_url": "//upload.wikimedia.org/wikipedia/commons/3/38/Flag_of_Tanzania.svg",
       "license": "Public domain"
     },
@@ -1521,7 +1525,7 @@
     {
       "url": "/wiki/Turkey",
       "alpha3": "TUR",
-      "name": "T\u00fcrkiye",
+      "name": "Turkey",
       "file_url": "//upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg",
       "license": "Public domain"
     },
@@ -1570,14 +1574,14 @@
     {
       "url": "/wiki/United_Kingdom",
       "alpha3": "GBR",
-      "name": "United Kingdom of Great Britain and Northern Ireland",
+      "name": "United Kingdom",
       "file_url": "//upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg",
       "license": "Public domain"
     },
     {
       "url": "/wiki/United_States",
       "alpha3": "USA",
-      "name": "United States of America",
+      "name": "United States",
       "file_url": "//upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg",
       "license": "Public domain"
     },
@@ -1619,7 +1623,7 @@
     {
       "url": "/wiki/Vietnam",
       "alpha3": "VNM",
-      "name": "Viet Nam",
+      "name": "Vietnam",
       "file_url": "//upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg",
       "license": "Public domain"
     },
