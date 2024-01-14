@@ -234,7 +234,7 @@ d3.csv("data/gnh_data.csv").then(data => {
             svg2.selectAll("text")
                 .data(countryFactors)
                 .enter().append("text")
-                .attr("x", d => 140)
+                .attr("x", d => 125)
                 .attr("y", d => yBarScale(d.factor) + yBarScale.bandwidth() / 2)
                 .text(d => d.factor)
                 .classed("bar-text", true)
